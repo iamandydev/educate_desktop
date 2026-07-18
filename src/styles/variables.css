@@ -1,0 +1,20 @@
+:root {
+  --color-primary: #386641;
+  --color-accent: #6a994e;
+  --color-accent-light: #a7c957;
+  --color-accent-dark: #386641;
+  --color-success: #6a994e;
+  --color-success-bg: #e8f5e9;
+  --color-error: #bc4749;
+  --color-error-bg: #fde8e8;
+  --color-text: #000000;
+  --color-text-secondary: #555555;
+  --color-text-muted: #9E9E9E;
+  --color-text-light: #9E9E9E;
+  --color-bg: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-bg-input: #F0F0F0;
+  --color-border: #F0F0F0;
+  --color-border-focus: #a7c957;
+  --color-pink: #a7c957;
+}

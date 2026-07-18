@@ -1,0 +1,25 @@
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('api', {
+  login: (usuario, password) => ipcRenderer.invoke('auth:login', usuario, password),
+  getCourses: () => ipcRenderer.invoke('courses:list'),
+  createCourse: (adminUsuario, nombre) => ipcRenderer.invoke('courses:create', adminUsuario, nombre),
+  getCourse: (id) => ipcRenderer.invoke('courses:get', id),
+  createStudent: (nombreCompleto, curso, numeroIdentificacion) => ipcRenderer.invoke('students:create', nombreCompleto, curso, numeroIdentificacion),
+  updateCourse: (id, adminUsuario, nombre) => ipcRenderer.invoke('courses:update', id, adminUsuario, nombre),
+  deleteCourse: (id, adminUsuario) => ipcRenderer.invoke('courses:delete', id, adminUsuario),
+  getCourseActivity: (id) => ipcRenderer.invoke('courses:getActivity', id),
+  assignStudentToCourse: (adminUsuario, cursoId, codigoAlumno) => ipcRenderer.invoke('courses:assignStudent', adminUsuario, cursoId, codigoAlumno),
+  getStudent: (codigo) => ipcRenderer.invoke('students:get', codigo),
+  getStudentHistory: (codigo) => ipcRenderer.invoke('students:getHistory', codigo),
+  getLessons: (cursoId) => ipcRenderer.invoke('lessons:list', cursoId),
+  createLesson: (cursoId, adminUsuario, data) => ipcRenderer.invoke('lessons:create', cursoId, adminUsuario, data),
+  getLesson: (cursoId, leccionId) => ipcRenderer.invoke('lessons:get', cursoId, leccionId),
+  updateLesson: (cursoId, leccionId, adminUsuario, data) => ipcRenderer.invoke('lessons:update', cursoId, leccionId, adminUsuario, data),
+  deleteLesson: (cursoId, leccionId, adminUsuario) => ipcRenderer.invoke('lessons:delete', cursoId, leccionId, adminUsuario),
+  getLevels: (leccionId) => ipcRenderer.invoke('levels:list', leccionId),
+  createLevel: (leccionId, adminUsuario, data) => ipcRenderer.invoke('levels:create', leccionId, adminUsuario, data),
+  getLevel: (leccionId, nivelId) => ipcRenderer.invoke('levels:get', leccionId, nivelId),
+  updateLevel: (leccionId, nivelId, adminUsuario, data) => ipcRenderer.invoke('levels:update', leccionId, nivelId, adminUsuario, data),
+  deleteLevel: (leccionId, nivelId, adminUsuario) => ipcRenderer.invoke('levels:delete', leccionId, nivelId, adminUsuario),
+});

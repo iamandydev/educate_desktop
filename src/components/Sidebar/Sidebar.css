@@ -1,0 +1,68 @@
+.sidebar{
+    background:var(--color-primary);
+    color:white;
+    padding:24px 14px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.sidebar-logo{
+    font-size:26px;
+    font-weight:800;
+    margin-bottom:40px;
+    padding-left:10px;
+    background:linear-gradient(135deg,var(--color-accent),var(--color-accent-light));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.sidebar nav{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.sidebar nav button{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    padding:12px 14px;
+    border:none;
+    border-radius:12px;
+    background:transparent;
+    color:rgba(255,255,255,.55);
+    font-size:14px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.sidebar nav button:hover{
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+.sidebar nav button.active{
+    background:rgba(106,153,78,.15);
+    color:var(--color-accent-light);
+}
+
+.sidebar .logout{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 14px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,.06);
+    color:rgba(255,255,255,.5);
+    font-size:14px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.sidebar .logout:hover{
+    background:rgba(188,71,73,.15);
+    color:#f87171;
+}

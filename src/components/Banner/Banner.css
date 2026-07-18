@@ -1,0 +1,56 @@
+.banner {
+    height: 180px;
+    border-radius: 20px;
+    background: var(--color-primary);
+    color: white;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-img {
+    height: 200px;
+    object-fit: contain;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.banner-text {
+    z-index: 1;
+}
+
+.banner-text h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.banner-text p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, .6);
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(106, 153, 78, .12);
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    right: 60px;
+    bottom: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(167, 201, 87, .1);
+}

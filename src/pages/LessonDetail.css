@@ -1,0 +1,368 @@
+@import "../styles/variables.css";
+
+/* Reutiliza todos los estilos de CourseDetail.css para detail-header, detail-icon,
+   detail-title-group, detail-subtitle, detail-loading, detail-error,
+   student-info-card, info-row, info-label, info-value,
+   student-courses-section, list-item, list-number, list-info, list-name, list-meta,
+   header-menu-container, menu-dots-btn, header-dropdown, dropdown-item,
+   confirm-overlay, confirm-dialog, confirm-actions, btn-cancel, btn-danger */
+
+.student-detail {
+  padding: 24px 32px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.detail-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--color-primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail-title-group h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.detail-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  margin: 0;
+}
+
+.detail-loading,
+.detail-error {
+  text-align: center;
+  padding: 32px;
+  color: var(--color-text-secondary);
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.back-btn:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.header-menu-container {
+  margin-left: auto;
+  position: relative;
+}
+
+.menu-dots-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.menu-dots-btn:hover {
+  background: var(--color-border);
+}
+
+.header-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 150px;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--color-text);
+  transition: background 0.15s;
+}
+
+.dropdown-item:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.dropdown-item:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.dropdown-item:hover {
+  background: var(--color-border);
+}
+
+.dropdown-item.danger {
+  color: var(--color-error);
+}
+
+.student-info-card {
+  background: var(--color-bg);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 5px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.info-value {
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.student-courses-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.detail-empty {
+  text-align: center;
+  padding: 32px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: background 0.2s;
+}
+
+.list-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.list-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.list-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.list-meta {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.confirm-dialog {
+  background: var(--color-bg);
+  border-radius: 12px;
+  padding: 28px;
+  width: 360px;
+  text-align: center;
+}
+
+.confirm-dialog p {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.confirm-actions .btn-cancel {
+  padding: 8px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.confirm-actions .btn-cancel:hover {
+  background: var(--color-border);
+}
+
+.btn-danger {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-error);
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-danger:hover {
+  background: #a33b3d;
+}
+
+.description-block {
+  margin: 0 0 20px;
+  padding: 8px 5px;
+  background: var(--color-bg);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.content-header h3 {
+  margin: 0;
+}
+
+.add-student-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-student-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(106, 153, 78, 0.3);
+}
+
+.list-item--menu {
+  position: relative;
+}
+
+.item-menu-container {
+  position: relative;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.item-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 140px;
+}
+
+.item-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text);
+  transition: background 0.15s;
+}
+
+.item-dropdown .dropdown-item:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.item-dropdown .dropdown-item:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.item-dropdown .dropdown-item:hover {
+  background: var(--color-border);
+}
+
+.item-dropdown .dropdown-item.danger {
+  color: var(--color-error);
+}

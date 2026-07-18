@@ -1,0 +1,35 @@
+.ui-card{
+    background:var(--color-bg);
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.ui-btn{
+    padding:10px 24px;
+    border:none;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.ui-btn-primary{
+    background:linear-gradient(135deg,var(--color-accent),var(--color-accent-light));
+    color:var(--color-primary);
+}
+
+.ui-btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(106,153,78,.3);
+}
+
+.ui-btn-secondary{
+    background:var(--color-bg-input);
+    color:var(--color-text-secondary);
+}
+
+.ui-btn-secondary:hover{
+    background:var(--color-border);
+}

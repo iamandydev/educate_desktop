@@ -1,0 +1,95 @@
+@import "../styles/variables.css";
+
+.nivel-form {
+  position: relative;
+  height: 100%;
+}
+
+.nivel-form .back-btn {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  z-index: 10;
+}
+
+.nivel-form .back-btn:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.option-row:last-child {
+  margin-bottom: 0;
+}
+
+.option-letter {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--color-border);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.option-letter.correct {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.option-row input {
+  flex: 1;
+}
+
+.correct-answer-row {
+  display: flex;
+  gap: 10px;
+}
+
+.answer-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 40px;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: all 0.2s;
+}
+
+.answer-option input {
+  display: none;
+}
+
+.answer-option.selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.answer-option:hover:not(.selected) {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
