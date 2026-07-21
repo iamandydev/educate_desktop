@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { ArrowLeft, UserPlus } from "lucide-react";
+import { ArrowLeft, UserPlus, Upload } from "lucide-react";
+import ImportStudentsModal from "../components/ImportStudentsModal/ImportStudentsModal";
 import "./RegisterStudent.css";
 
 export default function RegisterStudent({ courseName, courseId, adminUsuario, onBack, onStudentCreated }) {
@@ -9,6 +10,7 @@ export default function RegisterStudent({ courseName, courseId, adminUsuario, on
   const [numeroIdentificacion, setNumeroIdentificacion] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
 
   useEffect(() => {
     const fetchCursos = async () => {
@@ -88,6 +90,10 @@ export default function RegisterStudent({ courseName, courseId, adminUsuario, on
             {courseName ? `Curso: ${courseName}` : "Registro general de alumno"}
           </p>
         </div>
+        <button className="import-btn" onClick={() => setShowImportModal(true)}>
+          <Upload size={16} />
+          Importar
+        </button>
       </div>
 
       <form className="register-form" onSubmit={handleSubmit}>
@@ -135,6 +141,19 @@ export default function RegisterStudent({ courseName, courseId, adminUsuario, on
           </button>
         </div>
       </form>
+
+      {showImportModal && (
+        <ImportStudentsModal
+          cursoId={courseId}
+          cursoNombre={courseName}
+          adminUsuario={adminUsuario}
+          onClose={() => setShowImportModal(false)}
+          onImported={() => {
+            setShowImportModal(false);
+            onStudentCreated();
+          }}
+        />
+      )}
     </div>
   );
 }

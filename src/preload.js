@@ -22,4 +22,7 @@ contextBridge.exposeInMainWorld('api', {
   getLevel: (leccionId, nivelId) => ipcRenderer.invoke('levels:get', leccionId, nivelId),
   updateLevel: (leccionId, nivelId, adminUsuario, data) => ipcRenderer.invoke('levels:update', leccionId, nivelId, adminUsuario, data),
   deleteLevel: (leccionId, nivelId, adminUsuario) => ipcRenderer.invoke('levels:delete', leccionId, nivelId, adminUsuario),
+  openFile: () => ipcRenderer.invoke('dialog:openFile'),
+  readExcel: (filePath) => ipcRenderer.invoke('file:readExcel', filePath),
+  updateStudent: (codigo, adminUsuario, data) => ipcRenderer.invoke('students:update', codigo, adminUsuario, data),
 });

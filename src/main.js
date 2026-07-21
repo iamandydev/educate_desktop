@@ -1,5 +1,6 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("node:path");
+const fs = require("node:fs");
 
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -117,6 +118,22 @@ ipcMain.handle(
           curso,
           numero_identificacion: numeroIdentificacion,
         }),
+      });
+      return await response.json();
+    } catch (err) {
+      return { status: "error", message: "Error de conexión con el servidor" };
+    }
+  },
+);
+
+ipcMain.handle(
+  "students:update",
+  async (event, codigo, adminUsuario, data) => {
+    try {
+      const response = await fetch(`${API_BASE}/alumnos/${codigo}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ admin_usuario: adminUsuario, ...data }),
       });
       return await response.json();
     } catch (err) {
@@ -276,6 +293,37 @@ ipcMain.handle("levels:delete", async (event, leccionId, nivelId, adminUsuario) 
     return await response.json();
   } catch (err) {
     return { status: "error", message: "Error de conexión con el servidor" };
+  }
+});
+
+// ── Archivos / Importación ──
+ipcMain.handle("dialog:openFile", async () => {
+  const result = await dialog.showOpenDialog({
+    filters: [
+      { name: "Hojas de cálculo", extensions: ["xlsx", "xls", "csv"] },
+      { name: "Excel", extensions: ["xlsx", "xls"] },
+      { name: "CSV", extensions: ["csv"] },
+    ],
+    properties: ["openFile"],
+  });
+  if (result.canceled) return null;
+  return result.filePaths[0];
+});
+
+ipcMain.handle("file:readExcel", async (event, filePath) => {
+  try {
+    const XLSX = require("xlsx");
+    const buffer = fs.readFileSync(filePath);
+    const workbook = XLSX.read(buffer, { type: "buffer" });
+    const sheetName = workbook.SheetNames[0];
+    const sheet = workbook.Sheets[sheetName];
+    const data = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" });
+    if (data.length === 0) return { headers: [], rows: [], total: 0 };
+    const headers = data[0].map(String);
+    const rows = data.slice(1);
+    return { headers, rows, total: rows.length, sheetName };
+  } catch (err) {
+    return { error: "Error al leer el archivo: " + err.message };
   }
 });
 

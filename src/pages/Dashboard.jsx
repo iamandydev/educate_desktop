@@ -73,7 +73,8 @@ export default function Dashboard({ user, onLogout }) {
   const activeSidebarView = (() => {
     if (view === "settings") return "settings";
     if (view === "register" && !selectedCourse) return "register";
-    return "dashboard";
+    if (view === "dashboard") return "dashboard";
+    return "";
   })();
 
   return (

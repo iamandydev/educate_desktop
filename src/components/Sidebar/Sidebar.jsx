@@ -1,5 +1,5 @@
 import {
-  Calendar,
+  LayoutDashboard,
   UserPlus,
   Settings,
   LogOut
@@ -18,7 +18,7 @@ export default function Sidebar({ onLogout, onCreateStudent, onGoDashboard, onGo
             className={activeView === "dashboard" ? "active" : ""}
             onClick={onGoDashboard}
           >
-            <Calendar size={18} />
+            <LayoutDashboard size={18} />
             Dashboard
           </button>
 
