@@ -1,5 +1,6 @@
 import {
   LayoutDashboard,
+  CalendarDays,
   UserPlus,
   Settings,
   LogOut
@@ -7,7 +8,7 @@ import {
 
 import "./Sidebar.css";
 
-export default function Sidebar({ onLogout, onCreateStudent, onGoDashboard, onGoSettings, activeView }) {
+export default function Sidebar({ onLogout, onCreateStudent, onGoDashboard, onGoCalendar, onGoSettings, activeView }) {
   return (
     <div className="sidebar">
       <div>
@@ -20,6 +21,14 @@ export default function Sidebar({ onLogout, onCreateStudent, onGoDashboard, onGo
           >
             <LayoutDashboard size={18} />
             Dashboard
+          </button>
+
+          <button
+            className={activeView === "calendar" ? "active" : ""}
+            onClick={onGoCalendar}
+          >
+            <CalendarDays size={18} />
+            Calendario
           </button>
 
           <button

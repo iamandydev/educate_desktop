@@ -12,6 +12,7 @@ import LessonForm from "./LessonForm";
 import LessonDetail from "./LessonDetail";
 import NivelForm from "./NivelForm";
 import Settings from "./Settings";
+import Calendar from "../components/Calendar/Calendar";
 
 import "../styles/dashboard.css";
 
@@ -74,6 +75,7 @@ export default function Dashboard({ user, onLogout }) {
     if (view === "settings") return "settings";
     if (view === "register" && !selectedCourse) return "register";
     if (view === "dashboard") return "dashboard";
+    if (view === "calendar") return "calendar";
     return "";
   })();
 
@@ -93,6 +95,7 @@ export default function Dashboard({ user, onLogout }) {
           setView("register");
         }}
         onGoSettings={() => setView("settings")}
+        onGoCalendar={() => setView("calendar")}
         activeView={activeSidebarView}
       />
 
@@ -101,6 +104,8 @@ export default function Dashboard({ user, onLogout }) {
 
         {view === "settings" ? (
           <Settings />
+        ) : view === "calendar" ? (
+          <Calendar />
         ) : view === "nivel-form" && selectedCourse && selectedLessonId ? (
           <NivelForm
             leccionId={selectedLessonId}

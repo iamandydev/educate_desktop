@@ -1,0 +1,105 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 4px;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.calendar-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-transform: capitalize;
+}
+
+.calendar-nav {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.calendar-nav:hover {
+  background: var(--color-bg-input);
+  border-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 4px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  padding: 6px 0;
+  letter-spacing: 0.5px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  flex: 1;
+}
+
+.calendar-day {
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day:hover {
+  background: var(--color-bg-input);
+}
+
+.calendar-day.other-month {
+  color: var(--color-text-muted);
+  opacity: 0.35;
+}
+
+.calendar-day.other-month:hover {
+  opacity: 0.6;
+  background: var(--color-bg-input);
+}
+
+.calendar-day.today {
+  border: 2px solid var(--color-accent);
+  font-weight: 700;
+}
+
+.calendar-day.selected {
+  background: var(--color-primary) !important;
+  color: #fff !important;
+  font-weight: 700;
+  opacity: 1 !important;
+}
